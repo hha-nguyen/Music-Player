@@ -1,0 +1,81 @@
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap);
+*::before, *::after{
+    padding: 0;
+    margin: 0;
+}
+:root{
+    --pink: #ff74a4;
+    --violet: #9f6ea3;
+    --lightblack:#515c6f;
+    --white: #ffffff;
+    --darkwhite: #cecaca;
+    --pinkshadow: #ffcdcb;
+    --lightbshadow: rgba(0,0,0,0.15);
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+.wrapper{
+    width: 380px;
+    background-color: var(--white);
+    border-radius: 15px;
+    padding: 25px 30px;
+    box-shadow: 0px 6px 15px var(--lightbshadow);
+}
+.wrapper i{
+    cursor: pointer;
+}
+.top-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.top-bar i{
+    font-size: 30px;
+    color: var(--lightblack);
+}
+.top-bar span{
+    font-size: 18px;
+    color: var(--lightblack);
+}
+.img-area{
+    height: 256px;
+    width: 100%;
+    margin-top: 25px;
+    background-color: red;
+    overflow: hidden;
+    border-radius: 15px;
+}
+.img-area img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.song-details{
+    text-align: center;
+    margin: 10px 0;
+}
+.song-details .name{
+    font-size: 21px;
+}
+.song-details .artist{
+    font-size: 18px;
+    opacity: 0.9;
+}
+.progress-area{
+    height: 6px;
+    width: 100%;
+    background-color: red;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.progress-area .progress-bar{
+    height: inherit;
+    width: 50%;
+    border-radius: inherit;
+    background-color: blue;
+    
+}
