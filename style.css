@@ -1,4 +1,10 @@
 @import url(https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap);
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
 *::before, *::after{
     padding: 0;
     margin: 0;
@@ -20,6 +26,7 @@ body{
 }
 .wrapper{
     width: 380px;
+    overflow: hidden;
     position: relative;
     background-color: var(--white);
     border-radius: 15px;
@@ -155,23 +162,26 @@ body{
     -webkit-text-fill-color: transparent;
 }
 
-/* .music-list ul, p { 
-    list-style: initial;
-    margin: initial;
-    padding: 0px;
- } */
-
 .music-list{
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: -55%;
+    opacity: 0;
+    pointer-events: none;
     width: 100%;
     padding: 15px 30px;
     border-radius: 15px;
     background: var(--white);
-    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.14s ease-out; 
 }
-/* .music-list .header .row{
+
+.music-list .show{
+    bottom: 0;
+    opacity: 1;
+    pointer-events: auto;
+}
+.music-list .header .row{
     display: flex;
     align-items: center;
     font-size: 19px;
@@ -190,7 +200,30 @@ body{
 }
 .music-list ul{
     margin: 10px 0;
+    max-height: 260px;
+    overflow-y: auto;
+}
+.music-list ul::-webkit-scrollbar{
+    width: 0px; 
 }
 .music-list ul li{
+    cursor: pointer;
     list-style: none;
-}  */
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #e5e5e5;
+} 
+.music-list ul li:last-child{
+    border-bottom: 0px;
+}
+.music-list ul li .row span{
+    font-size: 17px;
+    
+}
+ul li .row p{
+    opacity: 0.9;
+    color: var(--lightblack);
+}
+ul li .audio-duration{
+    font-size: 16px;
+}
