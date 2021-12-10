@@ -82,7 +82,7 @@ body{
 }
 .progress-area .progress-bar{
     height: inherit;
-    width: 50%;
+    width: 0%;
     border-radius: inherit;
     position: relative;
     background: linear-gradient(90deg, var(--pink) 0%, var(--violet) 100%);
@@ -176,7 +176,7 @@ body{
     transition: all 0.14s ease-out; 
 }
 
-.music-list .show{
+.music-list.show{
     bottom: 0;
     opacity: 1;
     pointer-events: auto;

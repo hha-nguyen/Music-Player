@@ -6,7 +6,15 @@ mainAudio = wrapper.querySelector("#main-audio"),
 playPauseBtn = wrapper.querySelector(".play-pause"),  
 preBtn = wrapper.querySelector("#prev"),
 nextBtn = wrapper.querySelector("#next"),
-progressBar =wrapper.querySelector(".progress-bar");
+progressArea =wrapper.querySelector(".progress-area"),
+progressBar =wrapper.querySelector(".progress-bar"),
+musicList = wrapper.querySelector(".music-list"),
+showMoreBtn = wrapper.querySelector("#more-music"),
+hideMusicBtn = musicList.querySelector("#close");
+
+showMoreBtn.addEventListener("click", ()=>{
+    musicList.classList.toggle("show"); 
+}); 
 
 let musicIndex = 1;
 
@@ -80,4 +88,56 @@ mainAudio.addEventListener("timeupdate", (e)=>{
         currentSec = `0${currentSec}`;
     }
     musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
+});
+
+progressArea.addEventListener("click", (e)=>{
+    let progressWidthval = progressArea.clientWidth;
+    let clickedOffSetX = e.offsetX;
+    let songDuration = mainAudio.duration;
+
+    mainAudio.currentTime = (clickedOffSetX / progressWidthval) * songDuration;
+    playMusic();
+});
+
+const repeatBtn = wrapper.querySelector("#repeat-plist");
+repeatBtn.addEventListener("click", ()=>{
+
+    let getText = repeatBtn.innerText;
+    switch(getText){
+        case "repeat": 
+            repeatBtn.innerText = "repeat_one";
+            repeatBtn.setAttribute("title", "Song looped");
+            break;
+        case "repeat_one":
+            repeatBtn.innerText = "shuffle";
+            repeatBtn.setAttribute("title", "Playback shuffle");
+            break;
+        default: 
+            repeatBtn.innerText = "repeat";
+            repeatBtn.setAttribute("title", "Playlist looped");
+            break;
+    }
+});
+
+mainAudio.addEventListener("ended", ()=>{
+    let getText = repeatBtn.innerText;
+    switch(getText){
+        case "repeat": 
+            nextMusic();
+            break;
+        case "repeat_one":
+            mainAudio.currentTime = 0;
+            loadMusic(musicIndex);
+            playMusic();
+            break;
+        default: 
+            let ranIndex = Math.floor((Math.random()) * allMusic.length + 1);
+            do {
+                ranIndex = Math.floor((Math.random()) * allMusic.length + 1);
+            } while(musicIndex == ranIndex);
+            musicIndex = ranIndex;
+            loadMusic(musicIndex);
+            playMusic();
+            break;
+    }
 });
